@@ -1,0 +1,42 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "b0dd7bc60bc7f254faf141d9b02d7472"
+name = "Webrex Announcement"
+application_url = "https://announcement-bar.webrexstudio.com"
+embedded = true
+handle = "announcement-bar-with-slider"
+
+[webhooks]
+api_version = "2025-10"
+
+  [[webhooks.subscriptions]]
+  uri = "/gdpr/customers_data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/gdpr/customers_redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/gdpr/shop_redact"
+  compliance_topics = [ "shop/redact" ]
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_themes,write_customers"
+
+[auth]
+redirect_urls = [
+  "http://localhost:4200/app/auth",
+  "https://announcement-bar.webrexstudio.com/app/auth",
+  "https://announcement-bar-stg.webrexstudio.com/app/auth",
+  "http://localhost:4200/auth/callback",
+  "http://localhost:4200/auth/tokens",
+  "https://announcement-bar.webrexstudio.com/auth/callback",
+  "https://announcement-bar.webrexstudio.com/auth/tokens",
+  "https://localhost:4200/auth/tokens",
+  "https://localhost:4200/auth/callback"
+]
+
+[pos]
+embedded = false

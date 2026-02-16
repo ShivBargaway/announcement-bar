@@ -1,0 +1,41 @@
+import { Router } from "express";
+import "./../controllers/Reviews/Reviews.js";
+import "./../controllers/cronCtrl/cronSchedule.js";
+import BackupRoutes from "./BackupRoutes.js";
+import commonRoute from "./CommonRoute.js";
+import AdminRoutes from "./adminRoutes.js";
+import AdminSlidePreviewRoutes from "./adminSlidePreviewRoutes.js";
+import AnimationRoutes from "./animationRoutes.js";
+import AnnouncementRoutes from "./announcementRoutes.js";
+import CotactRoutes from "./contactRoutes.js";
+import CronRoutes from "./cronRoutes.js";
+import dismissProperty from "./dismissProperty.js";
+import EmailRoutes from "./emailRoutes.js";
+import FeedBackRoutes from "./feedBackRoute.js";
+import FileUploadRoute from "./fileUploadRoute.js";
+import GoogleAuthRoute from "./googleAuthRoute.js";
+import PricingRoutes from "./pricingRoutes.js";
+import uninstallRoute from "./uninstallRoutes.js";
+import UserRoutes from "./userRoutes.js";
+
+const router = Router();
+
+router.use(UserRoutes);
+router.use(EmailRoutes);
+router.use(BackupRoutes);
+router.use(FileUploadRoute);
+router.use(PricingRoutes);
+router.use(AnnouncementRoutes);
+router.use(AnimationRoutes);
+router.use(AdminSlidePreviewRoutes);
+router.use(CotactRoutes);
+
+router.use(AdminRoutes);
+router.use(GoogleAuthRoute);
+router.use(FileUploadRoute);
+router.use(CronRoutes);
+router.use(commonRoute);
+router.use(dismissProperty);
+router.use(FeedBackRoutes);
+router.use(uninstallRoute);
+export default router;

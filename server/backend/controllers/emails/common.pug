@@ -1,0 +1,259 @@
+doctype html
+head
+  meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  // So that mobile will display zoomed in
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  // enable media queries for windows phone 8
+  meta(name='format-detection' content='date=no')
+  // disable auto date linking in iOS 7-9
+  meta(name='format-detection' content='telephone=no')
+  // disable auto telephone linking in iOS 7-9
+  title #{appName}
+  style.
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+    p {
+      margin: 16px;
+      font-size:14px;
+      line-height: 1.4;
+      color: #46586b;
+    }
+    .button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3f82b1;
+    color: white;
+    border-radius: 3px;
+    padding: 10px 20px;
+    line-height: 1.3;
+    }
+    a{
+      color: #3f82b1;
+      text-decoration: none;
+    }
+    a.button{
+      color: white;
+    }
+    .reviewBox {
+    max-width: 350px;
+    margin: 20px auto;
+    background:rgb(245,247,250); 
+    padding: 10px;
+    border: 1px solid #cecaca;
+    text-align: center;
+    border-radius: 5px;
+    }
+    .content {
+    padding: 5px;
+    text-align: center;
+    }
+    .star-rating a {
+    text-decoration: none;
+    color: #e2e2e2;
+    font-size: 24px;
+    }
+    .star-rating a {
+    text-decoration: none;
+    color: #ffd700; /* Initially filled star color */
+    font-size: 24px;
+    }
+    .star-rating a:hover ~ a {
+    color: #e2e2e2; /* Change color of stars after the hovered star to empty */
+    }
+    .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px; 
+    }
+    .summary{
+    color: #46586b;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; 
+    margin-top: 5px;
+    }
+    .report-main-heading {
+    color: #333333;
+    font-size: 22px;
+    font-weight: 600; 
+    line-height: 1.3;
+    font-family: Arial, sans-serif;
+    mso-line-height-rule: exactly;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    }
+    .report-sub-heading {
+    color: #64748b; 
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 500px;
+    font-family: Arial, sans-serif;
+    font-weight: 400; 
+    mso-line-height-rule: exactly; 
+    }
+    .square-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .square-row {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .square-cell {
+        width: 50%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .square-card {
+        border: 1px solid #e2e8f0;
+        padding: 15px;
+        text-align: center;
+        height: auto;
+        min-height: 120px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .square-value {
+        font-size: clamp(24px, 6vw, 40px);
+        font-weight: bold;
+        color: #1e293b;
+        margin-bottom: 8px;
+    }
+    .square-label {
+        font-size: clamp(12px, 3vw, 16px);
+        color: #46586b;
+        line-height: 1.3;
+    }
+    .square-label .square-link {
+      color: #3f82b1;
+      text-decoration: none;
+    }
+    .square-label .square-link :hover {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    .score-low {
+    color: #ef4444 !important; 
+    }
+    .score-medium {
+    color: #f59e0b !important; 
+    }
+    .score-high {
+      color: #29845a !important;
+    }
+    .start-automation-highlight {
+    font-weight: bold;
+    font-size: 12em;
+    color: #f39c12;
+    background-color: #f9e4a1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .product-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto; /* more flexible than 'fixed' here */
+    }
+    .product-item-row {
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+      height: 64px;
+    }
+    .product-image-wrapper {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* keeps natural ratio */
+    }
+    .product-title {
+      font-size: 14px;
+      color: #46586b;
+      font-weight: 700;
+      padding-left: 12px;
+      white-space: nowrap;
+    }
+    .product-score-cell {
+      text-align: right;
+      padding-right: 12px;
+    }
+    .product-score {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .no-image {
+      background-color: #f8f8f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #666;
+      padding-bottom: 10px;
+      width: 40px;
+      padding-top: 10px;
+    }
+    .hello {
+    color: #333333;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px; 
+    margin-top: 5px;
+    margin-bottom: 20px;
+    }
+    @media only screen and (max-width: 480px) {
+    .top-padding-container {
+      padding-top: 0px !important;
+    }
+    }
+body
+  div(class="top-padding-container" style={width: "100%", background: "rgb(245,247,250)", padding: "40px 0px 0px"})
+    //- table(style={width: "600px", background: "#fff",borderRadius: "5px", borderCollapse: "collapse", fontFamily: "'Allerta', sans-serif", fontSize: "12px", fontWeight: "400", lineHeight: "16px", letterSpacing: "0em", textAlign: "left",margin: "0 auto"})
+    table(style="width:600px;background:#fff;margin:0 auto;border-radius:5px")
+      tbody
+        tr
+          td
+            div(style={display: "block", padding: "10px", borderRadius: "0px 0px 10px 10px"})
+              img(style={display: "block", margin: "0 auto", width:"190px"}, src=appLogoUrl, alt="1")
+        tr
+          td
+            case template
+              when 'speedStatus'
+                include ./speedStatus.pug
+              when 'bulkOperationReport'
+                include ./bulkOperationReport.pug
+              when 'customerReview'
+               include ./customerReview.pug
+              when 'customerReport'
+               include ./customerReport.pug
+              default
+                - throw new Error('"template" must be "register", "uninstall", "speedStatus" or "review"')
+    div(style="height:100%;border-radius:0px;width:100%")
+      div(style="box-sizing:border-box;height:100%;padding:30px 20px;border-width:0px;border-style:solid;border-color:transparent;border-radius:0px")
+        table(style="font-family:helvetica,sans-serif", role="presentation", cellpadding="0", cellspacing="0", width="100%", border="0")
+          tbody
+            tr
+              td(style="word-break:break-word;padding:0px;font-family:helvetica,sans-serif", align="left")
+                div(style="font-size:12px;color:rgb(114,114,114);line-height:140%;text-align:center")
+                  p(style="font-size:12px;line-height:140%;margin:0px") <span style="line-height:16.8px"></span><span style="line-height:16.8px"></span><em>©#{appName}. </em><em>A-806, Money Plant High Street, </em>
+                  p(style="font-size:12px;line-height:140%;margin:0px") <em>Jagatpur Road, Gota, Ahmedabad, Gujarat 382470,</em>
+                  p(style="font-size:12px;line-height:140%;margin:0px") <br><em>You're receiving this email because you installed #{appName} on Shopify.</em>
+                  a(href="%unsubscribe_url%", style="text-decoration: none; color: #46586b") <em>Unsubscribe</em>

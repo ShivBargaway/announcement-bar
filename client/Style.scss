@@ -1,0 +1,1096 @@
+@import "./../node_modules/@shopify/polaris-tokens/dist/scss/media-queries";
+
+.Admin-Access {
+  display: flex;
+}
+
+.Premium-Button {
+  .Polaris-Icon {
+    margin: unset;
+  }
+}
+.pricing-plan {
+  .Polaris-Icon {
+    margin: unset;
+    .Polaris-Icon__Svg {
+      width: 20px;
+      height: 20px;
+      max-width: unset;
+      max-height: unset;
+    }
+  }
+}
+
+form {
+  .Polaris-BlockStack {
+    .Polaris-FormLayout__Item:empty {
+      display: none;
+    }
+  }
+}
+.Polaris-Thumbnail {
+  .Polaris-Icon {
+    margin: auto;
+  }
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.Polaris-Page--fullWidth {
+  width: 100%;
+}
+.meta-seo-score-div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f6f6f7;
+}
+
+.meta-seo-score-conditions {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f6f6f7;
+}
+
+.ProgressCircle {
+  text-align: center;
+  display: flex;
+  @property --p {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  .Circle-Box {
+    position: relative;
+    margin: 0px auto;
+  }
+
+  .pie {
+    --p: 20;
+    --b: 22px;
+    --c: darkred;
+    --w: 150px;
+    --f: 25px;
+
+    width: var(--w);
+    aspect-ratio: 1;
+    position: relative;
+    display: inline-grid;
+    margin: 5px;
+    place-content: center;
+    font-size: var(--f);
+    font-weight: bold;
+    font-family: sans-serif;
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+  .pie:before,
+  .pie:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+  }
+  .pie:before {
+    inset: 0;
+    background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,
+      conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+    mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  }
+  .pie:after {
+    inset: calc(50% - var(--b) / 2);
+    background: var(--c);
+    transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+  }
+  .animate {
+    animation: p 1s 0.5s both;
+  }
+  .no-round:before {
+    background-size: 0 0, auto;
+  }
+  .no-round:after {
+    content: none;
+  }
+  .full-circle {
+    z-index: 0;
+  }
+}
+@keyframes p {
+  from {
+    --p: 0;
+  }
+}
+.Limited-Text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.flex {
+  display: flex;
+}
+
+.lineheight {
+  line-height: 3;
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  .switch {
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease-in-out;
+    padding: 5px;
+    position: relative;
+    .switch-checkbox {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
+    }
+
+    .switch-circle {
+      width: 16px;
+      height: 16px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .switch-label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 2px;
+      cursor: pointer;
+      font-size: 10px;
+    }
+
+    &.on {
+      .switch-circle {
+        transform: translateX(25px);
+      }
+      .switch-label {
+        transform: translateX(-16px);
+      }
+    }
+
+    &.off {
+      .switch-circle {
+        transform: translateX(-2px);
+      }
+      .switch-label {
+        transform: translateX(-3px);
+      }
+    }
+  }
+  &.right {
+    h4 {
+      margin-left: 10px;
+    }
+  }
+  &.left {
+    flex-direction: row-reverse;
+    justify-content: start;
+    h4 {
+      margin-right: 10px;
+    }
+  }
+  &.end {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    h4 {
+      margin-right: auto;
+    }
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: transparent;
+}
+.items {
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  // width: 200px;
+  height: 50px;
+  margin-bottom: 10px;
+  background-size: contain;
+
+  span {
+    font-size: 13px;
+    color: #656565;
+
+    a {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+}
+
+.rdw-editor-wrapper {
+  .rdw-editor-toolbar {
+    border: 1px solid #abb1ba;
+    margin-bottom: 0px;
+    border-radius: 4px 4px 0px 0px;
+    border-bottom: 1px solid #abb1ba;
+    .rdw-option-wrapper {
+      height: auto;
+    }
+  }
+  .editor-style {
+    max-height: 90px;
+    min-height: 100px;
+    overflow: scroll;
+    border: 1px solid;
+    border-color: #abb1ba;
+    border-top-width: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    .DraftEditor-root {
+      border-color: #abb1ba;
+      border: 0px;
+    }
+    .DraftEditor-editorContainer {
+      border-left: 0px;
+      cursor: text;
+    }
+    .public-DraftStyleDefault-block {
+      margin: 0px;
+      padding: 10px;
+      border: 0px solid #abb1ba;
+    }
+  }
+}
+body {
+  margin: 0px;
+}
+
+/*progressbar*/
+.progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding: 10px;
+  /*CSS counters to number the steps*/
+  counter-reset: step;
+  width: 100%;
+  display: flex;
+}
+
+.progressbar li {
+  list-style-type: none;
+  color: #000;
+  font-size: 9px;
+  width: 50%;
+  float: left;
+  position: relative;
+  text-align: center;
+  font-size: 13px;
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 24px;
+  height: 24px;
+  display: block;
+  background: white;
+  border-radius: 25px;
+  margin: 0 auto 10px auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1px solid #007a5c;
+  color: #007a5c;
+}
+
+/*progressbar connectors*/
+.progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background: #adadad;
+  position: absolute;
+  left: -50%;
+  top: 10px;
+  z-index: 0;
+  /*put it behind the numbers*/
+}
+
+.progressbar li:first-child:after {
+  /*connector not needed before the first step*/
+  content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+.progressbar li.active:before,
+.progressbar li.active:after {
+  background: #007a5c;
+  color: white;
+}
+
+.progressbar li.active:after {
+  z-index: 0;
+}
+
+.progressbar li.active:before {
+  z-index: 1;
+}
+
+.Support-page {
+  position: relative;
+  z-index: 100;
+  .support-section {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+  }
+}
+.sidebar-support {
+  min-width: 300px;
+  max-width: 400px;
+  z-index: 100;
+}
+.pricing-card {
+  margin: 0 auto;
+  max-width: 320px;
+  width: 100%;
+  > div {
+    height: 100%;
+  }
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.Polaris-DataTable__Cell {
+  white-space: normal;
+}
+/*css for public pages : start*/
+.store-url {
+  text-decoration: none;
+}
+.goto-app-button {
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, #0f4062, #0f4062), linear-gradient(0deg, #22465f, #22465f);
+  color: #fff;
+  border: 1px solid #22465f;
+  border-radius: 40px;
+  padding: 15px 0px;
+  font-size: 17px;
+  cursor: pointer;
+  a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #fff;
+    &:active {
+      color: #fff;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+  &.outline {
+    background: transparent;
+    color: #0f4062;
+    border: 1px solid #0f4062;
+    padding: 10px 0px;
+    a {
+      color: #0f4062;
+      &:active {
+        color: #0f4062;
+      }
+      &:hover {
+        color: #0f4062;
+      }
+    }
+  }
+}
+.hero-text {
+  font-size: 58px;
+  font-weight: 800;
+  line-height: 87px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #0f4062;
+}
+
+.section-heading {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 55px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.logo-square {
+  height: 235px;
+  width: 235px;
+  background: #ade0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1f2124;
+  img {
+    margin-bottom: 20px;
+  }
+}
+.footer .Polaris-Link {
+  color: #fff;
+}
+
+.footer .Polaris-Link:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.footer .Polaris-Link::after {
+  content: "";
+  height: 5px;
+  width: 5px;
+  background: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  margin-left: 12px;
+  transform: translate(0px, -50%);
+}
+
+.footer .Polaris-Link:last-child:after {
+  display: none;
+}
+
+.page-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.flex-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-href {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: #1f2124;
+  &:hover,
+  &:visited,
+  &:active {
+    color: #1f2124;
+  }
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    margin-right: 15px;
+  }
+}
+
+/*css for public pages : end*/
+
+.Polaris-Tooltip-TooltipOverlay {
+  pointer-events: auto !important;
+}
+
+label:has(> .premium_icon) {
+  display: flex !important;
+}
+
+.file-upload-preview {
+  position: relative;
+  .remove-file {
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    right: -10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.login-page {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+}
+.getData {
+  width: 100%;
+  max-width: 1000px;
+}
+.admin-panel {
+  .Polaris-Frame__Content {
+    display: flex;
+  }
+}
+
+.billing-button .Polaris-Button--pressed {
+  background-color: rgb(0, 122, 92) !important;
+}
+
+.editor-error-field {
+  background-color: rgba(253, 226, 221, 1);
+  border: 2px solid rgba(197, 40, 12, 1);
+  border-color: rgba(197, 40, 12, 1);
+  border-radius: 0.25rem;
+}
+.helptext-multiline {
+  height: 82px;
+}
+
+.onboarding-container {
+  .step-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .step-icon {
+      height: 50px;
+      width: 50px;
+      // background: var(--p-color-bg-surface-info);
+      margin-right: var(--p-space-400);
+      border-radius: var(--p-border-radius-200);
+      .Polaris-Box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .Polaris-Icon {
+        height: 25px;
+        width: 25px;
+      }
+    }
+    .step-title {
+      width: calc(100% - 40px);
+      cursor: pointer;
+      display: flex;
+      .step-title-content {
+        width: calc(100% - 150px);
+        padding-right: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .step-title-indicator {
+        width: 150px;
+        .ProgressCircle .pie {
+          margin: 0px;
+        }
+      }
+    }
+  }
+  .instructions {
+    padding: var(--p-space-400);
+    background: var(--p-color-bg-surface-hover);
+    .instruction {
+      .instruction_title_container {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding: var(--p-space-400);
+        .instruction_indicator {
+          margin-right: var(--p-space-200);
+          height: 24px;
+          width: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .instruction_indicator_icon {
+            display: flex;
+            cursor: pointer;
+          }
+          .hover {
+            display: none;
+          }
+          &:hover {
+            .hover {
+              display: block;
+            }
+          }
+        }
+        .instruction_title {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+      &:hover,
+      &.open {
+        .Polaris-Box {
+          background: var(--p-color-bg-surface);
+        }
+      }
+      &.status-done {
+        .instruction_title span {
+          opacity: 0.5;
+          text-decoration: line-through;
+        }
+      }
+      .instruction-collapsible {
+        .instruction-content {
+          padding: var(--p-space-400);
+          padding-top: 0px;
+        }
+      }
+    }
+  }
+}
+
+.onboarding-instruction-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .instruction-video-container {
+    border-radius: var(--p-border-radius-200);
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--p-color-border);
+    box-shadow: var(--p-shadow-300);
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      button[data-name="PlayButton"] {
+        pointer-events: none;
+      }
+    }
+  }
+  .instruction-content-container {
+    width: 100%;
+    display: flex;
+  }
+  &.has-video {
+    .instruction-content-container {
+      // padding: var(--p-space-600);
+      padding-top: 10px;
+      padding-left: 10px;
+      width: calc(100% - 360px);
+    }
+  }
+}
+.onboarding-video-modal {
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media #{$p-breakpoints-lg-up} {
+  .onboarding-container {
+    min-width: 900px;
+  }
+}
+@media #{$p-breakpoints-md-only} {
+  .onboarding-container {
+    min-width: 670px;
+  }
+}
+
+.common-icon .Polaris-Box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggested-item {
+  cursor: pointer;
+  .title h5 {
+    color: inherit;
+  }
+  .Polaris-BlockStack {
+    height: 100%;
+    .Polaris-Box {
+      height: 100%;
+    }
+  }
+}
+.suggested-items-container {
+  display: flex;
+  .previous,
+  .next {
+    background: #fff;
+    width: 40px;
+    padding: var(--p-space-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--p-border-radius-100);
+  }
+  .previous {
+    margin-right: var(--p-space-200);
+    .Polaris-Icon {
+      transform: rotate(90deg);
+    }
+  }
+  .next {
+    margin-left: var(--p-space-200);
+    .Polaris-Icon {
+      transform: rotate(270deg);
+    }
+  }
+  .Polaris-Scrollable--horizontal {
+    scroll-behavior: smooth;
+    transition: scroll-left 0.5s ease-in-out;
+  }
+}
+
+.Polaris-Frame:has(.feedback-page) {
+  display: none;
+}
+.recommendedApp {
+  position: absolute;
+  left: -41px;
+  top: -8px;
+  transform-origin: 50% 50%;
+  transform: translate(20px, 20px) rotate(-45deg);
+  background-color: rgba(126, 16, 16, 1);
+  width: 100px;
+  align-items: center;
+  color: white;
+  font-size: smaller;
+}
+form {
+  .Polaris-BlockStack {
+    .Polaris-FormLayout__Item:empty {
+      display: none;
+    }
+  }
+}
+
+.Polaris-BlockStack:has(> .Polaris-InlineStack > .Polaris-FormLayout__Item > .hide-filed) {
+  display: none;
+}
+
+// appointlet css
+.appointlet-iframe {
+  border: unset;
+  display: none;
+}
+.appointlet-popover {
+  border: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000001;
+}
+.appointlet-inline {
+  display: block !important;
+  background: #f8f9fa;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  height: 800px;
+  width: 100%;
+}
+.appointlet-loader,
+.appointlet-loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.appointlet-loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border: 1.1em solid hsla(0, 0%, 100%, 0.2);
+  border-left-color: #fff;
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s linear infinite;
+  animation: load8 1.1s linear infinite;
+  z-index: 1;
+}
+@-webkit-keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.appointlet-popover-backdrop {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  bottom: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  width: 100vw;
+  z-index: 1000000;
+}
+body.modal-open {
+  overflow-y: hidden;
+}
+.appointlet-button {
+  background-color: #1e9bff;
+  color: #fff;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 10px 16px !important;
+  font-size: 16px !important;
+  border-radius: 5px !important;
+  text-decoration: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  line-height: normal;
+}
+.appointlet-button:before {
+  content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+PHBhdGggb3BhY2l0eT0iLjgiIGQ9Ik0xNS4yMSAzMGM4LjI4NCAwIDE1LTYuNzE2IDE1LTE1IDAtOC4yODQtNi43MTYtMTUtMTUtMTUtOC4yODUgMC0xNSA2LjcxNi0xNSAxNSAwIDguMjg0IDYuNzE1IDE1IDE1IDE1eiIgZmlsbD0iI0QwRjBGRiIvPjxwYXRoIGQ9Ik0xOS4yMSA4aC04YTQgNCAwIDAwLTQgNHY3YTQgNCAwIDAwNCA0aDhhNCA0IDAgMDA0LTR2LTdhNCA0IDAgMDAtNC00eiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuMjEgOWEzIDMgMCAwMC0zIDN2N2EzIDMgMCAwMDMgM2g4YTMgMyAwIDAwMy0zdi03YTMgMyAwIDAwLTMtM2gtOHptLTUgM2E1IDUgMCAwMTUtNWg4YTUgNSAwIDAxNSA1djdhNSA1IDAgMDEtNSA1aC04YTUgNSAwIDAxLTUtNXYtN3oiIGZpbGw9IiMzMjQ2ODIiLz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjIxIDVhMSAxIDAgMDExIDF2MS42OTJhMSAxIDAgMTEtMiAwVjZhMSAxIDAgMDExLTF6TTE5LjIxIDVhMSAxIDAgMDExIDF2MS42OTJhMSAxIDAgMTEtMiAwVjZhMSAxIDAgMDExLTF6TTE4Ljg3NCAxMi4yNTNhMSAxIDAgMDEuMDgzIDEuNDExbC00IDQuNWExIDEgMCAwMS0xLjQ1NS4wNDNsLTItMmExIDEgMCAwMTEuNDE1LTEuNDE0bDEuMjUgMS4yNSAzLjI5NS0zLjcwN2ExIDEgMCAwMTEuNDEyLS4wODN6IiBmaWxsPSIjMzI0NjgyIi8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxwYXRoIGZpbGw9IiNmZmYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC4yMSkiIGQ9Ik0wIDBoMzB2MzBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=");
+  color: #fff;
+  margin-right: 12px;
+  height: 30px;
+  width: 30px;
+}
+.appointlet-button:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s linear;
+}
+.appointlet-button:active {
+  filter: brightness(90%);
+}
+
+.cro-button {
+  background-color: rgba(0, 148, 213, 1);
+  color: white;
+  border: none;
+  padding: 4px 7px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.seo-button {
+  background-color: rgba(153, 138, 0, 1);
+  color: white;
+  border: none;
+  padding: 4px 7px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Offer tiers */
+.offer-tier {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 1rem 0.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #3498db;
+}
+
+.offer-tier.middle-tier {
+  border-left-color: #2ecc71;
+}
+
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #3498db;
+  color: white;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.middle-tier .tier-badge {
+  background: #2ecc71;
+}
+
+.support-button {
+  width: 100%;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.support-button:hover {
+  background-color: #0b7dda;
+}
+
+.side-notification-button {
+  transform: rotate(270deg);
+  .Polaris-Button {
+    width: 32px;
+    background: black !important;
+  }
+}
+
+.right-side-button {
+  position: fixed;
+  top: 50%;
+  bottom: 50%;
+  right: -120px;
+  z-index: 9000;
+  transform: translateY(50px) rotate(90deg);
+
+  .Polaris-Button {
+    background: linear-gradient(135deg, #7b2ff2, #f357a8);
+    color: #fff !important;
+    box-shadow: 0 4px 16px rgba(123, 47, 242, 0.15);
+    &:hover,
+    &:focus {
+      background: linear-gradient(135deg, #f357a8, #7b2ff2);
+      color: #fff !important;
+      box-shadow: 0 6px 24px rgba(123, 47, 242, 0.25);
+    }
+    svg {
+      fill: #fff !important;
+    }
+  }
+}
+
+// Blinking animation for critical badge
+@keyframes blink-critical-badge {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+  }
+}
+
+.blink-critical-badge {
+  animation: blink-critical-badge 1.5s ease-in-out infinite;
+}
+
+.feature-utilization-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9000;
+
+  .Polaris-Button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: inherit;
+    &:hover,
+    &:focus {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+section.Polaris-Box:has(.partner-growth-modal-section) {
+  padding: 0px !important;
+}
+
+.partner-growth-visit-button {
+  .Polaris-Button {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover,
+    &:focus {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+      color: #fff !important;
+      box-shadow: 0 6px 24px rgba(79, 70, 229, 0.4) !important;
+      transform: translateY(-2px);
+    }
+
+    svg {
+      fill: #fff !important;
+    }
+  }
+}
+
+.partner-growth-consulting-button {
+  .Polaris-Button {
+    background: linear-gradient(135deg, #10b981, #06b6d4) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover,
+    &:focus {
+      background: linear-gradient(135deg, #14b8a6, #0891b2) !important;
+      color: #fff !important;
+      box-shadow: 0 6px 24px rgba(16, 185, 129, 0.4) !important;
+      transform: translateY(-2px);
+    }
+
+    svg {
+      fill: #fff !important;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{% assign anncouement_res = app.metafields.app_status.anncouement %}
+{% assign animation_res = app.metafields.app_status.animation %}
+{% assign user_res = app.metafields.app_status.abUser %}
+
+<script id="test-snippets">
+  {% if animation_res == nil or animation_res == '' %}
+    window.ab_animation = {};
+    {% else %}
+    window.ab_animation = {{ animation_res | replace: '=>nil', ':null' | replace: '=>', ':' }};
+  {% endif %}
+
+  {% if anncouement_res == nil or anncouement_res == '' %}
+    window.ab_announcement = [];
+    {% else %}
+    window.ab_announcement = {{ anncouement_res | replace: '=>nil', ':null' | replace: '=>', ':' }};
+  {% endif %}
+
+   {% if user_res == nil or user_res == '' %}
+    window.ab_user = "";
+  {% else %}
+    window.ab_user = {{ user_res | replace: '=>nil', ':null' | replace: '=>', ':' }};
+  {% endif %}
+</script>
+
+<script>
+  var activeCurrency = "{{ localization.country.currency.iso_code }}";
+  var activeCurrencySymbol = "{{ localization.country.currency.symbol }}";
+  var productDetails = {{ product | json }};
+  var ws_currencyFormat = {{ shop.money_with_currency_format| json}};
+</script>

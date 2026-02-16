@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="shopify-debug" content="web-vitals" /> -->
+    <meta name="shopify-api-key" content="%VITE_SHOPIFY_API_KEY%" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <script>
+      const adminAccessToken = localStorage?.getItem("adminAccessToken");
+      const isPublicRoute =
+        window.location.pathname.includes("/public") || window.location.pathname.includes("/admin");
+      if (!adminAccessToken && !isPublicRoute) {
+        document.write(
+          '<link rel="preload" href="https://cdn.shopify.com/shopifycloud/app-bridge.js" as="script" /><script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"><\/script>'
+        );
+      }
+    </script>
+    <script type="module">
+      if (!import.meta.env || !import.meta.env.PROD) {
+        // Because the base HTML is rendered in the server side, we need to manually embed the code to enable HMR in our
+        // code, so that the vite server is properly enabled to run HMR
+        const script = document.createElement("script");
+        script.setAttribute("type", "module");
+        script.setAttribute("src", "./dev_embed.js");
+        document.getElementsByTagName("head")[0].append(script);
+      }
+    </script>
+    <script>
+      const global = globalThis;
+    </script>
+    <title>Webrex Announcement Bar</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+      #loading {
+        background: #f1f2f4;
+      }
+      #loading .loader {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">
+      <div class="loader">
+        <img src="/assets/logo-white.webp" alt="loading" />
+      </div>
+    </div>
+    <div id="shopify-app"><!--index.jsx injects App.jsx here--></div>
+    <script type="module" src="./Index.jsx"></script>
+
+    <script type="module">
+      if (!import.meta.env || !import.meta.env.PROD) {
+        const observer = new PerformanceObserver((list) => {
+          for (const entry of list.getEntries()) {
+            // console.log(window.location.href);
+            // console.log("Layout shift:", entry);
+          }
+        });
+        observer.observe({ type: "layout-shift", buffered: true });
+      }
+
+      var pathname = window?.location?.pathname;
+      function processWebVitals(metrics) {
+        try {
+          const { effectiveType, rtt, saveData, downlink } = navigator?.connection || "Unknown";
+          const deviceInfo = {
+            browser: navigator?.userAgent,
+            os: navigator?.platform,
+            appCodeName: navigator?.appCodeName,
+            appVersion: navigator?.appVersion,
+            cookieEnabled: navigator?.cookieEnabled,
+            networkType: effectiveType,
+            networkSpeed: downlink,
+            deviceMemory: navigator?.deviceMemory,
+            vendor: navigator?.vendor,
+            isMobile: navigator?.userAgentData?.mobile,
+            platform: navigator?.userAgentData?.platform,
+          };
+          const response = fetch("/apps/api/web-vitals", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pathname, ...metrics, deviceInfo }), // Send metrics data
+          });
+          pathname = window?.location?.pathname;
+        } catch (error) {
+          console.log("Error sending metrics data:", error);
+        }
+      }
+      if (!adminAccessToken && !isPublicRoute && typeof shopify !== "undefined") {
+        shopify.webVitals.onReport(processWebVitals);
+      }
+      // !adminAccessToken && !isPublicRoute && shopify.webVitals.onReport(processWebVitals);
+    </script>
+  </body>
+</html>

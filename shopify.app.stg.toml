@@ -1,0 +1,45 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "e65a3eedbf55bf1348e5384809f58910"
+name = "Stg Announcement Bar"
+application_url = "https://announcement-bar-stg.webrexstudio.com"
+embedded = true
+handle = "stg-announcement-bar"
+
+[webhooks]
+api_version = "2025-10"
+
+  [[webhooks.subscriptions]]
+  uri = "/gdpr/customers_data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/gdpr/customers_redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "/gdpr/shop_redact"
+  compliance_topics = [ "shop/redact" ]
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_themes,write_customers"
+
+[auth]
+redirect_urls = [
+  "https://announcement-bar-stg.webrexstudio.com/auth/callback",
+  "https://announcement-bar-stg.webrexstudio.com/auth/tokens"
+]
+
+[pos]
+embedded = false
+
+
+
+
+
+
+
+
+
+
